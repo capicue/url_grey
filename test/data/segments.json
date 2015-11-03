@@ -1,0 +1,184 @@
+[
+  [
+    "http://www.google.com/",
+    {
+      "scheme": "http",
+      "username": "",
+      "password": "",
+      "host": "www.google.com",
+      "port": "",
+      "path": "/",
+      "query": "",
+      "ref": ""
+    }
+  ],
+  [
+    "aBoUt:vErSiOn",
+    {
+      "scheme": "about",
+      "username": "",
+      "password": "",
+      "host": "vErSiOn",
+      "port": "",
+      "path": "",
+      "query": "",
+      "ref": ""
+    }
+  ],
+  [
+    "about:host/path?query#ref",
+    {
+      "scheme": "about",
+      "username": "",
+      "password": "",
+      "host": "host",
+      "port": "",
+      "path": "/path",
+      "query": "query",
+      "ref": "ref"
+    }
+  ],
+  [
+    "about://host/path?query#ref",
+    {
+      "scheme": "about",
+      "username": "",
+      "password": "",
+      "host": "host",
+      "port": "",
+      "path": "/path",
+      "query": "query",
+      "ref": "ref"
+    }
+  ],
+  [
+    "chrome:host/path?query#ref",
+    {
+      "scheme": "chrome",
+      "username": "",
+      "password": "",
+      "host": "host",
+      "port": "",
+      "path": "/path",
+      "query": "query",
+      "ref": "ref"
+    }
+  ],
+  [
+    "chrome://host/path?query#ref",
+    {
+      "scheme": "chrome",
+      "username": "",
+      "password": "",
+      "host": "host",
+      "port": "",
+      "path": "/path",
+      "query": "query",
+      "ref": "ref"
+    }
+  ],
+  [
+    "    www.google.com:124?foo#",
+    {
+      "scheme": "http",
+      "username": "",
+      "password": "",
+      "host": "www.google.com",
+      "port": "124",
+      "path": "",
+      "query": "foo",
+      "ref": ""
+    }
+  ],
+  [
+    "user@www.google.com",
+    {
+      "scheme": "http",
+      "username": "user",
+      "password": "",
+      "host": "www.google.com",
+      "port": "",
+      "path": "",
+      "query": "",
+      "ref": ""
+    }
+  ],
+  [
+    "ftp:/user:P:a$$Wd@..ftp.google.com...::23///pub?foo#bar",
+    {
+      "scheme": "ftp",
+      "username": "user",
+      "password": "P:a$$Wd",
+      "host": "..ftp.google.com...:",
+      "port": "23",
+      "path": "///pub",
+      "query": "foo",
+      "ref": "bar"
+    }
+  ],
+  [
+    "[2001:db8::1]/path",
+    {
+      "scheme": "http",
+      "username": "",
+      "password": "",
+      "host": "[2001:db8::1]",
+      "port": "",
+      "path": "/path",
+      "query": "",
+      "ref": ""
+    }
+  ],
+  [
+    "[::1]",
+    {
+      "scheme": "http",
+      "username": "",
+      "password": "",
+      "host": "[::1]",
+      "port": "",
+      "path": "",
+      "query": "",
+      "ref": ""
+    }
+  ],
+  [
+    "[2001:4860:",
+    {
+      "scheme": "http",
+      "username": "",
+      "password": "",
+      "host": "[2001:4860:",
+      "port": "",
+      "path": "",
+      "query": "",
+      "ref": ""
+    }
+  ],
+  [
+    "[2001:4860:/foo",
+    {
+      "scheme": "http",
+      "username": "",
+      "password": "",
+      "host": "[2001:4860:",
+      "port": "",
+      "path": "/foo",
+      "query": "",
+      "ref": ""
+    }
+  ],
+  [
+    "http://:b005::68]",
+    {
+      "scheme": "http",
+      "username": "",
+      "password": "",
+      "host": ":b005::68]",
+      "port": "",
+      "path": "",
+      "query": "",
+      "ref": ""
+    }
+  ]
+]
