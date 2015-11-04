@@ -9,7 +9,7 @@
       "port": "",
       "path": "/",
       "query": null,
-      "ref": ""
+      "ref": null
     }
   ],
   [
@@ -22,7 +22,7 @@
       "port": "",
       "path": "",
       "query": null,
-      "ref": ""
+      "ref": null
     }
   ],
   [
@@ -100,7 +100,7 @@
       "port": "",
       "path": "",
       "query": null,
-      "ref": ""
+      "ref": null
     }
   ],
   [
@@ -126,7 +126,7 @@
       "port": "",
       "path": "/path",
       "query": null,
-      "ref": ""
+      "ref": null
     }
   ],
   [
@@ -139,7 +139,7 @@
       "port": "",
       "path": "",
       "query": null,
-      "ref": ""
+      "ref": null
     }
   ],
   [
@@ -152,7 +152,7 @@
       "port": "",
       "path": "",
       "query": null,
-      "ref": ""
+      "ref": null
     }
   ],
   [
@@ -165,7 +165,7 @@
       "port": "",
       "path": "/foo",
       "query": null,
-      "ref": ""
+      "ref": null
     }
   ],
   [
@@ -178,7 +178,7 @@
       "port": "",
       "path": "",
       "query": null,
-      "ref": ""
+      "ref": null
     }
   ]
 ]

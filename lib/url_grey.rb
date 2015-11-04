@@ -85,7 +85,7 @@ class URLGrey
   end
 
   def fixed_ref
-    return "" if self.ref.empty?
+    return "" if self.ref.nil?
     "\##{self.ref}"
   end
 
@@ -155,7 +155,7 @@ class URLGrey
       before_ref, self.ref = full_path.match(%r{^(.*?)#(.*)$})[1..2]
     else
       before_ref = full_path
-      self.ref = ""
+      self.ref = nil
     end
 
     if before_ref.include?("?")
