@@ -1,11 +1,19 @@
 require "url_grey/version"
 
 class URLGrey
+  AUTHORITY_TERMINATORS = "/\\?#"
+  ABOUT_BLANK_URL = "about:blank"
+  PATH_PASS_CHARS = "!$&'()*+,/:;=@[]"
+  PATH_UNESCAPE_CHARS = "-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz~"
+  HOST_ESCAPE_CHARS = " !\"\#$&'()*,<=>@`{|}"
+  HOST_NORMAL_CHARS = "+-.0123456789:ABCDEFGHIJKLMNOPQRSTUVWXYZ[]_abcdefghijklmnopqrstuvwxyz"
+  HOST_CHROME_DEFAULT = "version"
+
   attr_accessor :original, :coerced
   attr_accessor :scheme, :username, :password, :host, :port, :path, :query, :ref
 
   def initialize(_original)
-    self.original = _original.gsub(%r{\s}, '')
+    self.original = _original.sub(%r{^\s*}, '')
 
     parse!
   end
@@ -21,6 +29,72 @@ class URLGrey
       query:    self.query,
       ref:      self.ref
     }
+  end
+
+  def fixed
+    return ABOUT_BLANK_URL if self.original == ABOUT_BLANK_URL
+
+    "#{fixed_scheme}#{fixed_credentials}#{fixed_host}#{fixed_port}#{fixed_path}#{fixed_query}#{fixed_ref}"
+  end
+
+  def fixed_credentials
+    return "" unless (!self.username.empty? || !self.password.empty?)
+    return "#{self.username}@" if self.password.empty?
+    "#{self.username}:#{self.password}@"
+  end
+
+  # from components/url_formatter/url_fixer.cc FixupHost
+  def fixed_host
+    fixed = self.host.gsub(%r{\s}, '').downcase
+    unless fixed.match(%r{^\.*$})
+      fixed = fixed.sub(%r{^\.*}, '')
+      fixed = fixed.sub(%r{(?<=\.)\.*$}, '')
+    end
+    if fixed.empty? && ["about", "chrome"].include?(self.scheme)
+      fixed = HOST_CHROME_DEFAULT
+    end
+    fixed
+  end
+
+  # from url/url_canon_path.cc CanonicalizePath
+  def fixed_path
+    fixed = self.path
+    if fixed[0] != '/'
+      fixed = '/' + fixed
+    end
+
+    fixed.chars.map do |char|
+      if PATH_PASS_CHARS.include?(char)
+        char
+      elsif PATH_UNESCAPE_CHARS.include?(char)
+        char
+      else
+        "%#{char.codepoints.first.to_s(16)}"
+      end
+    end.join("")
+  end
+
+  def fixed_port
+    return "" if self.port.empty?
+    ":#{self.port}"
+  end
+
+  def fixed_query
+    return "" if self.query.empty?
+    "?#{self.query}"
+  end
+
+  def fixed_ref
+    return "" if self.ref.empty?
+    "\##{self.ref}"
+  end
+
+  def fixed_scheme
+    fixed = self.scheme
+    if fixed == "about"
+      fixed = "chrome"
+    end
+    "#{fixed}://"
   end
 
   private
@@ -102,14 +176,14 @@ class URLGrey
     end
 
     if !find_scheme(self.coerced)
-      if self.coerced.match(%r{^ftp\.})
+      if self.coerced.match(%r{^ftp\.}i)
         self.coerced = "ftp://" + self.coerced
       else
         self.coerced = "http://" + self.coerced
       end
     end
 
-    self.scheme = find_scheme(self.coerced)
+    self.scheme = find_scheme(self.coerced) || ""
   end
 
   def find_scheme(text)
@@ -124,6 +198,15 @@ class URLGrey
     # reject anything with invalid characters
     return false unless component.match(%r{^[+\-0-9a-z]*$})
 
+    # fix up segmentation for "www:123/"
+    return false if has_port(text)
+
     component
+  end
+
+  def has_port(text)
+    return false unless text.include?(":")
+    match = text.match(%r{:(.*?)[\\/\?#]}) || text.match(%r{:(.*)$})
+    match[1].match(%r{^\d+$})
   end
 end

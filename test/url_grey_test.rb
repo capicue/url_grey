@@ -12,4 +12,14 @@ describe URLGrey do
       end
     end
   end
+
+  describe "#fixed" do
+    it "correctly fixes up the url" do
+      list = JSON.parse(File.read(File.dirname(__FILE__) + '/data/urls.json'))
+      list.each do |url, fixed|
+        url = URLGrey.new(url)
+        url.fixed.must_equal(fixed)
+      end
+    end
+  end
 end
