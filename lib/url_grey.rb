@@ -8,6 +8,14 @@ class URLGrey
   HOST_ESCAPE_CHARS = " !\"\#$&'()*,<=>@`{|}"
   HOST_NORMAL_CHARS = "+-.0123456789:ABCDEFGHIJKLMNOPQRSTUVWXYZ[]_abcdefghijklmnopqrstuvwxyz"
   HOST_CHROME_DEFAULT = "version"
+  DEFAULT_PORTS = {
+    ftp:    21,
+    gopher: 70,
+    http:   80,
+    https:  443,
+    ws:     80,
+    wss:    443,
+  }
 
   attr_accessor :original, :coerced
   attr_accessor :scheme, :username, :password, :host, :port, :path, :query, :ref
@@ -75,7 +83,7 @@ class URLGrey
   end
 
   def fixed_port
-    return "" if self.port.empty?
+    return "" if (self.port.empty? || self.port.to_i == DEFAULT_PORTS[self.scheme.to_sym])
     ":#{self.port}"
   end
 
