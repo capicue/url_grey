@@ -79,10 +79,10 @@
     "www.google.com#foo",
     "http://www.google.com/#foo"
   ],
-  /*[*/
-    /*"www.google.com?",*/
-    /*"http://www.google.com/?"*/
-  /*],*/
+  [
+    "www.google.com?",
+    "http://www.google.com/?"
+  ],
   /*[*/
     /*"www.google.com#",*/
     /*"http://www.google.com/#"*/

@@ -80,7 +80,7 @@ class URLGrey
   end
 
   def fixed_query
-    return "" if self.query.empty?
+    return "" if self.query.nil?
     "?#{self.query}"
   end
 
@@ -162,7 +162,7 @@ class URLGrey
       self.path, self.query = before_ref.match(%r{^(.*?)\?(.*)$})[1..2]
     else
       self.path = before_ref
-      self.query = ""
+      self.query = nil
     end
   end
 

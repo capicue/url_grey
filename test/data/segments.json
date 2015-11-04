@@ -8,7 +8,7 @@
       "host": "www.google.com",
       "port": "",
       "path": "/",
-      "query": "",
+      "query": null,
       "ref": ""
     }
   ],
@@ -21,7 +21,7 @@
       "host": "vErSiOn",
       "port": "",
       "path": "",
-      "query": "",
+      "query": null,
       "ref": ""
     }
   ],
@@ -99,7 +99,7 @@
       "host": "www.google.com",
       "port": "",
       "path": "",
-      "query": "",
+      "query": null,
       "ref": ""
     }
   ],
@@ -125,7 +125,7 @@
       "host": "[2001:db8::1]",
       "port": "",
       "path": "/path",
-      "query": "",
+      "query": null,
       "ref": ""
     }
   ],
@@ -138,7 +138,7 @@
       "host": "[::1]",
       "port": "",
       "path": "",
-      "query": "",
+      "query": null,
       "ref": ""
     }
   ],
@@ -151,7 +151,7 @@
       "host": "[2001:4860:",
       "port": "",
       "path": "",
-      "query": "",
+      "query": null,
       "ref": ""
     }
   ],
@@ -164,7 +164,7 @@
       "host": "[2001:4860:",
       "port": "",
       "path": "/foo",
-      "query": "",
+      "query": null,
       "ref": ""
     }
   ],
@@ -177,7 +177,7 @@
       "host": ":b005::68]",
       "port": "",
       "path": "",
-      "query": "",
+      "query": null,
       "ref": ""
     }
   ]
