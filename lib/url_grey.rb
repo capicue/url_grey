@@ -16,6 +16,7 @@ class URLGrey
     ws:     80,
     wss:    443,
   }
+  STANDARD_SCHEMES = ['http', 'https', 'file', 'ftp', 'gopher', 'ws', 'wss', 'filesystem']
 
   attr_accessor :original, :coerced
   attr_accessor :scheme, :username, :password, :host, :port, :path, :query, :ref
@@ -102,7 +103,12 @@ class URLGrey
     if fixed == "about"
       fixed = "chrome"
     end
-    "#{fixed}://"
+
+    if (STANDARD_SCHEMES + ["about", "chrome"]).include?(fixed)
+      "#{fixed}://"
+    else
+      "#{fixed}:"
+    end
   end
 
   private
