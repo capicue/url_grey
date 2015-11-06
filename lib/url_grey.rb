@@ -66,7 +66,16 @@ class URLGrey
     if fixed.empty? && ["about", "chrome"].include?(self.scheme)
       fixed = HOST_CHROME_DEFAULT
     end
-    unless fixed.match(%r{^[[:ascii:]]*$})
+
+    if fixed.match(%r{^[[:ascii:]]*$})
+      fixed = fixed.chars.map do |char|
+        if HOST_NORMAL_CHARS.include?(char)
+          char
+        else
+          "%#{char.codepoints.first.to_s(16).upcase}"
+        end
+      end.join("")
+    else
       fixed = SimpleIDN.to_ascii(fixed)
     end
     fixed
