@@ -194,9 +194,9 @@
   [
     "http;/www.google.com/",
     "http://www.google.com/"
+  ],
+  [
+    ";http://www.google.com/",
+    "http://%3Bhttp//www.google.com/"
   ]
-  /*[*/
-    /*";http://www.google.com/",*/
-    /*"http://%3Bhttp//www.google.com/"*/
-  /*]*/
 ]

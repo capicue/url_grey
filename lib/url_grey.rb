@@ -198,7 +198,7 @@ class URLGrey
   def parse_scheme!
     self.coerced = self.original
 
-    if !find_scheme(self.original)
+    if !find_scheme(self.original) && (self.original[0]!= ";")
       if find_scheme(self.original.sub(";", ":"))
         self.coerced = self.original.sub(";", ":")
       end
