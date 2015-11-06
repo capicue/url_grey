@@ -1,3 +1,5 @@
+require "simpleidn"
+
 require "url_grey/version"
 
 class URLGrey
@@ -61,6 +63,9 @@ class URLGrey
     end
     if fixed.empty? && ["about", "chrome"].include?(self.scheme)
       fixed = HOST_CHROME_DEFAULT
+    end
+    unless fixed.match(%r{^[[:ascii:]]*$})
+      fixed = SimpleIDN.to_ascii(fixed)
     end
     fixed
   end

@@ -95,10 +95,10 @@
     "user@www.google.com",
     "http://user@www.google.com/"
   ],
-  /*[*/
-    /*"\u6C34.com",*/
-    /*"http://xn--1rw.com/"*/
-  /*],*/
+  [
+    "\u6C34.com",
+    "http://xn--1rw.com/"
+  ],
   [
     "user:passwd@www.google.com:8080/",
     "user:passwd@www.google.com:8080/"
