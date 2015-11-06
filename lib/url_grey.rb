@@ -74,7 +74,7 @@ class URLGrey
   # from url/url_canon_path.cc CanonicalizePath
   def fixed_path
     fixed = self.path
-    if fixed[0] != '/'
+    if (fixed[0] != '/') && ((STANDARD_SCHEMES + ["about", "chrome"]).include?(self.scheme))
       fixed = '/' + fixed
     end
 
@@ -219,6 +219,8 @@ class URLGrey
     return false unless match = text.match(%r{^(.*?):})
 
     component = match[1].downcase
+
+    return "" if component.empty?
 
     # first character must be a letter
     return false unless component.match(%r{^[a-z]})
