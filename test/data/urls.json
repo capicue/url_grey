@@ -179,10 +179,10 @@
     "about;chrome",
     "chrome://chrome/"
   ],
-  /*[*/
-    /*"whatsup;//fool",*/
-    /*"whatsup://fool"*/
-  /*],*/
+  [
+    "whatsup;//fool",
+    "whatsup://fool"
+  ],
   [
     "http://host/port?query;moar",
     "http://host/port?query;moar"

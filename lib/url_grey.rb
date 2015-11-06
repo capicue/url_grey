@@ -23,6 +23,7 @@ class URLGrey
 
   attr_accessor :original, :coerced
   attr_accessor :scheme, :username, :password, :host, :port, :path, :query, :ref
+  attr_accessor :slashes
 
   def initialize(_original)
     self.original = _original.sub(%r{^\s*}, '')
@@ -121,7 +122,7 @@ class URLGrey
     if (STANDARD_SCHEMES + ["about", "chrome"]).include?(fixed)
       "#{fixed}://"
     else
-      "#{fixed}:"
+      "#{fixed}:#{self.slashes}"
     end
   end
 
@@ -130,7 +131,7 @@ class URLGrey
   def parse!
     parse_scheme!
     after_scheme = self.coerced.match(%r{:(.*)})[1]
-    _, after_slashes = after_scheme.match(%r{^([\\\/]*)(.*)$})[1..2]
+    self.slashes, after_slashes = after_scheme.match(%r{^([\\\/]*)(.*)$})[1..2]
 
     # authority terminators: '/', '\', '?', '#'
     if (after_slashes.chars & ['/', '\\', '?', '#']).any?
