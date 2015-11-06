@@ -96,7 +96,7 @@
     "http://user@www.google.com/"
   ],
   /*[*/
-    /*"水.com",*/
+    /*"\u6C34.com",*/
     /*"http://xn--1rw.com/"*/
   /*],*/
   [
@@ -128,27 +128,27 @@
     "http://google.ftp.com/"
   ],
   /*[*/
-    /*"http://foo.com/s?q=Ѕ",*/
+    /*"http://foo.com/s?q=\u0405",*/
     /*"http://foo.com/s?q=%D0%85"*/
   /*],*/
   /*[*/
-    /*"http://foo.com/s?q=업",*/
+    /*"http://foo.com/s?q=\uC5C5",*/
     /*"http://foo.com/s?q=%EC%97%85"*/
   /*],*/
   /*[*/
-    /*"http://foo.com/s?q=𐀅",*/
+    /*"http://foo.com/s?q=\uD800\uDC05",*/
     /*"http://foo.com/s?q=%F0%90%80%85"*/
   /*],*/
   /*[*/
-    /*"http://foo.com/s?q=Р",*/
+    /*"http://foo.com/s?q=\u0420",*/
     /*"http://foo.com/s?q=%D0%A0"*/
   /*],*/
   /*[*/
-    /*"http://foo.com/s?q=엠",*/
+    /*"http://foo.com/s?q=\uC5E0",*/
     /*"http://foo.com/s?q=%EC%97%A0"*/
   /*],*/
   /*[*/
-    /*"http://foo.com/s?q=𐀠",*/
+    /*"http://foo.com/s?q=\uD800\uDC20",*/
     /*"http://foo.com/s?q=%F0%90%80%A0"*/
   /*],*/
   [
