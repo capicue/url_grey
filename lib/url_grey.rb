@@ -84,8 +84,12 @@ class URLGrey
         char
       elsif PATH_UNESCAPE_CHARS.include?(char)
         char
+      elsif char == "."
+        # TODO: if the dot is preceded by a slash, do directory stuff:
+        # google.com/abc/.././def -> google.com/def
+        char
       else
-        "%#{char.codepoints.first.to_s(16)}"
+        "%#{char.codepoints.first.to_s(16).upcase}"
       end
     end.join("")
   end
