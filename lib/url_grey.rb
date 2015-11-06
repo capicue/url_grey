@@ -10,6 +10,7 @@ class URLGrey
   HOST_ESCAPE_CHARS = " !\"\#$&'()*,<=>@`{|}"
   HOST_NORMAL_CHARS = "+-.0123456789:ABCDEFGHIJKLMNOPQRSTUVWXYZ[]_abcdefghijklmnopqrstuvwxyz"
   HOST_CHROME_DEFAULT = "version"
+  QUERY_NORMAL_CHARS = "!$%&()*+,-./0123456789:;=?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
   DEFAULT_PORTS = {
     ftp:    21,
     gopher: 70,
@@ -94,8 +95,16 @@ class URLGrey
   end
 
   def fixed_query
-    return "" if self.query.nil?
-    "?#{self.query}"
+    fixed = self.query
+    return "" if fixed.nil?
+    fixed = fixed.bytes.map do |byte|
+      if QUERY_NORMAL_CHARS.unpack("U*").include?(byte)
+        [byte].pack("U")
+      else
+        "%#{byte.to_s(16).upcase}"
+      end
+    end.join('')
+    "?#{fixed}"
   end
 
   def fixed_ref
